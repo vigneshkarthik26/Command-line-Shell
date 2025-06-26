@@ -12,7 +12,6 @@ def execute_comm(comm_tkns):
     if cmd == 'cd':
         try:
             target_path = comm_tkns[1] if len(comm_tkns)>1 else os.path.expanduser("~")
-            os.chdir(target_path)
         except FileNotFoundError:
             print(f"cd: no such file or directory: {target_path}")
     
@@ -31,7 +30,6 @@ def execute_comm(comm_tkns):
 def main():
     while True:
         try:
-            cwd = os.getcwd()
             comm_ip = input(f"{cwd} $ ")
             comm_tkns = shlex.split(comm_ip)
             execute_comm(comm_tkns)
